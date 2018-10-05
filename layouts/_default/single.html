@@ -1,0 +1,44 @@
+{{ define "header" }}
+<header class="homepage">
+  {{ partial "navbar.html" . }}
+  <section class="container">
+    <div class="row">
+      <div class="col-md-8 col-sm-12">
+        <h1><span class="green">Eclipse</span> <span class="green">CogniCrypt</span></h1>
+        <p>Eclipse CogniCrypt is an intelligent open-source platform ensuring the secure usage of crypto components.</p>
+      </div>
+    </div>
+  </section>
+    <!-- <section class="header-divider">
+    <img src="assets/images/header-divider.png" alt="divider">
+  </section>-->
+</header>
+{{ end }}
+
+{{ define "main" }}
+<main>
+  <div class="{{ if (and (isset .Page.Params "container") (ne .Page.Params ""))}}{{ .Page.Params.container }}{{else}}container{{end}}">
+    {{ if ne .Page.Params.hide_sidebar "true" }}
+    <div class="row">
+      <div class="col-md-18 padding-bottom-30">
+        {{ end }}
+        {{ if (and (ne .Title .Page.Params.headline) (ne .Page.Params.hide_page_title "true"))}}
+        <h1>{{ .Title }}</h1>
+        {{ end }}
+        {{ .Content }}  
+        {{ if ne .Page.Params.hide_sidebar "true" }}
+      </div>
+      <div class="col-md-6  padding-bottom-30">
+        {{ partial "sidebar.html" . }}
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</main>
+{{ end }}
+
+{{ define "footer-suffix" }}
+  <script src="js/shuffle.js"></script>
+  <script src="js/index.js"></script>
+{{ end }}
+

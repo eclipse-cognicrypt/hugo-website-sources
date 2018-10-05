@@ -1,0 +1,43 @@
+{{ define "header" }}
+<header class="homepage">
+  {{ partial "navbar.html" . }}
+  <section class="container">
+    <div class="row">
+      <div class="col-md-8 col-sm-12">
+        <h1><span class="green">Eclipse</span> <span class="green">CogniCrypt</span></h1>
+        <p>Eclipse CogniCrypt is an intelligent open-source platform ensuring the secure usage of crypto components.</p>
+      </div>
+    </div>
+  </section>
+    <!-- <section class="header-divider">
+    <img src="assets/images/header-divider.png" alt="divider">
+  </section>-->
+</header>
+{{ end }}
+
+{{ define "main" }}
+<main class="main">
+  <section class="first">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10">
+        <h3><span class="green">{{ .Title }}</span></h3>        	
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="second">
+    <div class="container">
+        <div class="col-md-10">
+    		{{ .Content }}
+      </div>
+    </div>
+  </section>
+</main>
+{{ end }}
+
+{{ define "footer-suffix" }}
+  <script src="js/shuffle.js"></script>
+  <script src="js/index.js"></script>
+{{ end }}
+
