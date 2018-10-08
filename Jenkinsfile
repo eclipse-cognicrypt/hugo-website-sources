@@ -30,7 +30,7 @@ spec:
       steps {
         dir('www') {
             git branch: 'master',
-                url: 'ssh://genie.cognicrypt@git.eclipse.org:29418/www.eclipse.org/cognicrypt',
+                url: 'ssh://genie.cognicrypt@git.eclipse.org:29418/www.eclipse.org/cognicrypt.git',
                 credentialsId: 'git.eclipse.org-bot-ssh'
         }
       }
