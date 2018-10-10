@@ -1,4 +1,4 @@
-baseURL = ""
+baseURL = "https://www.eclipse.org/cognicrypt/"
 languageCode = "en-us"
 title = "Securely using Cryptography with CogniCrypt"
 theme = "hugo-solstice-theme"
