@@ -25,6 +25,10 @@ spec:
     checkoutToSubdirectory('hugo')
   }
 
+  triggers {
+    cron('H/5 * * * *')
+  }
+
   stages {
     stage('Checkout www repo') {
       steps {
