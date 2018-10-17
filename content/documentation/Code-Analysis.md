@@ -6,8 +6,8 @@ Whenever a user who has CogniCrypt's code-analysis plugin installed in their Ecl
 
 Assume the following code snippet that implements an encryption using Java's Cipher API. In the method 'encrypt()', a  Cipher object is initialized by means of a call to the static factory method 'Cipher.getInstance()'. Its first and only parameter, a String, represents a so-called transformation, consisting of a) an encryption algorithm, b) a mode of operation, and c) a Padding scheme. These three parameters comprise the configuration of the encryption. In the first code snippet below - a snippet as CogniCrypt's [[Code Generator|Code Generation]] may generate it - the configuration is secure. 
 
-[[https://github.com/CROSSINGTUD/CogniCrypt/blob/master/documentation/Images%20for%20Tutorial/07Encryption.png|alt=Ecnryption Implementation using Java Cipher API]]
+![Encryption Implementation using Java Cipher API](https://raw.githubusercontent.com/CROSSINGTUD/CogniCrypt/master/documentation/Images%20for%20Tutorial/07Encryption.png)
 
 However, if a user decides to alter the code by removing the padding scheme and mode of operation the configuration becomes insecure. This is due to the fact that the underlying implementation falls back onto the default mode of operation Electronic Code Book(ECB), which is widely considered insecure. CogniCrypt is aware of this misuse and points that out to the developer by means of an Eclipse error marker, as the screenshot below shows.
 
-[[https://github.com/CROSSINGTUD/CogniCrypt/blob/master/documentation/Images%20for%20Tutorial/08Misuse.png|alt=Insecure Usage of Cipher API]]
+![Insecure Usage of Cipher API](https://raw.githubusercontent.com/CROSSINGTUD/CogniCrypt/master/documentation/Images%20for%20Tutorial/08Misuse.png)
