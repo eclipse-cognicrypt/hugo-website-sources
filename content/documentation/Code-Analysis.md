@@ -1,0 +1,13 @@
+This tutorial explains how a user of CogniCrypt would interact with its code-analysis feature. Readers who are more interested in the technical details of the underlying static analysis are referred to the corresponding [research paper](http://drops.dagstuhl.de/opus/volltexte/2018/9215/pdf/LIPIcs-ECOOP-2018-10.pdf). If you wish to run the analysis without setting up the Eclipse plugin, feel free to check out our artefact for the paper at [Dagstuhl Research Online Publication Server](http://drops.dagstuhl.de/opus/volltexte/2018/9237/pdf/DARTS-4-3-6.pdf) that allows you to execute the analysis within a docker container.
+
+# Misuse Detection
+
+Whenever a user who has CogniCrypt's code-analysis plugin installed in their Eclipse saves a file, CogniCrypt automatically runs a suite of static analyses on the whole project of the file. Note: CogniCrypt only analyzes code reachable from the main method for misuses. Should a user implement a new method using an API CogniCrypt is capable of finding misuses for, introduces such a misuses, but has not yet made it reachable, CogniCrypt will not find it.
+
+Assume the following code snippet that implements an encryption using Java's Cipher API. In the method 'encrypt()', a  Cipher object is initialized by means of a call to the static factory method 'Cipher.getInstance()'. Its first and only parameter, a String, represents a so-called transformation, consisting of a) an encryption algorithm, b) a mode of operation, and c) a Padding scheme. These three parameters comprise the configuration of the encryption. In the first code snippet below - a snippet as CogniCrypt's [[Code Generator|Code Generation]] may generate it - the configuration is secure. 
+
+[[https://github.com/CROSSINGTUD/CogniCrypt/blob/master/documentation/Images%20for%20Tutorial/07Encryption.png|alt=Ecnryption Implementation using Java Cipher API]]
+
+However, if a user decides to alter the code by removing the padding scheme and mode of operation the configuration becomes insecure. This is due to the fact that the underlying implementation falls back onto the default mode of operation Electronic Code Book(ECB), which is widely considered insecure. CogniCrypt is aware of this misuse and points that out to the developer by means of an Eclipse error marker, as the screenshot below shows.
+
+[[https://github.com/CROSSINGTUD/CogniCrypt/blob/master/documentation/Images%20for%20Tutorial/08Misuse.png|alt=Insecure Usage of Cipher API]]
