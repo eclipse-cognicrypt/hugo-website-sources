@@ -28,13 +28,14 @@ The Code Generation Feature of CogniCrypt is designed as a wizard that guides de
 
 The static code analysis feature of CogniCrypt continously checks the developer's code for correct implementations. Upon saving the code in the editor, a static analysis is triggered in the background and reports warning when a cryptographic API is used incorrectly.
 
-The video below shows a minimal example demonstrating the static code analysis within Eclipse. In the Example, the developer creates a `Cipher` object but supplies the incorrect `String` as argument.
-
+The video below shows a minimal example demonstrating the static code analysis within Eclipse.
 
 <p align="center">
 <video src="videos/staticanalysis.mp4" controls width=800px>
   Ihr Browser kann dieses Video nicht wiedergeben.<br/>
   Dieser Film zeigt eine Demonstration des video-Elements. 
   Sie können ihn unter <a href="#">Link-Addresse</a> abrufen.
-</video>
+</video> 
 </p>
+
+In the Example, the developer creates a `Cipher` object and supplies the `String "AES"` as argument to configure using the encryption algorithm `AES`. He saves his code and is warned instantaniously by CogniCrypt. By default, the algorithm `AES` encrypts with the insecure block mode `ECB` and does not use any padding. The developer changes the `Cipher` object to be cofigures in a secure way (using the `String "AES/CBC/PKCS5Padding"` which tells to use a secure block mode `"CBC"` and a correct padding mode). CogniCrrypt's error message disappears.
