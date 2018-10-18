@@ -16,8 +16,26 @@ theme = "hugo-solstice-theme"
 [[menu.main]]
   name = "Documentation"
   weight = -100
-  identifier = "documentation"
+  identifier = "doc-menu"
   url= "/documentation/"  
+
+[[menu.main]]
+  name = "Code Generation"
+  parent = "doc-menu"
+  identifier = "code-gen"
+  url = "/documentation/codegen/"
+
+[[menu.main]]
+  name = "Static Code Analysis"
+  parent = "doc-menu"
+  identifier = "code-analysis"
+  url = "/documentation/codeanalysis/"
+
+[[menu.main]]
+  name = "CrySL Language"
+  parent = "doc-menu"
+  identifier = "crysl-language"
+  url = "/documentation/crysl/"
   
 [[menu.main]]
   name = "Contributing"
