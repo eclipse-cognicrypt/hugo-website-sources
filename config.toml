@@ -40,8 +40,32 @@ theme = "hugo-solstice-theme"
 [[menu.main]]
   name = "Contributing"
   weight = -70
-  identifier = "contributing"
-  url= "/contributing/"  
+  identifier = "contr-menu"
+  url= "/contributing/" 
+
+[[menu.main]]
+  name = "Bugs and Feature Requests"
+  parent = "contr-menu"
+  identifier = "bugs-features"
+  url = "/contributing#bugs"  
+  
+[[menu.main]]
+  name = "Code Contributions"
+  parent = "contr-menu"
+  identifier = "code-contr"
+  url = "/contributing#code"  
+  
+[[menu.main]]
+  name = "Cryptographic Primitives"
+  parent = "contr-menu"
+  identifier = "crypto-prim"
+  url = "/contributing#prim"  
+  
+[[menu.main]]
+  name = "Cryptographic Tasks"
+  parent = "contr-menu"
+  identifier = "crypto-tasks"
+  url = "/contributing#tasks"  
   
 [[menu.main]]
   name = "News"
