@@ -12,7 +12,7 @@ The plugin Eclipse CogniCrypt ships in two main components: A wizard for **code 
 
 # Code Generation
 
-The Code Generation Feature of CogniCrypt is designed as a wizard that guides developers to select the correct cryptographic algorithms for their cryptographic task at hand. The wizard asks high level questions regarding the task and the data formats the developer needs to encrypt.
+The Code Generation Feature of CogniCrypt is designed as a wizard that guides developers to select the correct cryptographic algorithms for their cryptographic task at hand. The wizard asks high level questions regarding the task and the data formats the developer needs to encrypt. The [user documentation](./documentation/codegen) discusses the wizard in more detail.
 
 <p align="center">
 
@@ -37,5 +37,4 @@ The video below shows a minimal example demonstrating the static code analysis w
   Sie können ihn unter <a href="#">Link-Addresse</a> abrufen.
 </video> 
 </p>
-
-In the Example, the developer creates a `Cipher` object and supplies the `String "AES"` as argument to configure using the encryption algorithm `AES`. He saves his code and is warned instantaniously by CogniCrypt. By default, the algorithm `AES` encrypts with the insecure block mode `ECB` and does not use any padding. The developer changes the `Cipher` object to be cofigures in a secure way (using the `String "AES/CBC/PKCS5Padding"` which tells to use a secure block mode `"CBC"` and a correct padding mode). CogniCrrypt's error message disappears.
+In the Example, the developer creates a `Cipher` object and supplies the `String "AES"` as argument to configure using the encryption algorithm `AES`. He saves his code and is warned instantaniously by CogniCrypt. By default, the algorithm `AES` encrypts with the insecure block mode `ECB` and does not use any padding. The developer changes the `Cipher` object to be cofigures in a secure way (using the `String "AES/CBC/PKCS5Padding"` which tells to use a secure block mode `"CBC"` and a correct padding mode). CogniCrrypt's error message disappears. For a more in-depth explanation, please check out the [user documentation](./documentation/codeanalysis).
