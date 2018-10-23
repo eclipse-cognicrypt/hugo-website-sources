@@ -1,0 +1,82 @@
+{{ define "main" }}
+<style>
+  blockquote {
+  background: #f9f9f9;
+  border-left: 5px solid #ccc;
+  margin: 0.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C" "\201D";
+  }
+  blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+  }
+  blockquote p {
+  display: inline;
+  }
+</style>
+<!-- Place this tag after the last +1 button tag. -->
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script');
+    po.type = 'text/javascript';
+    po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(po, s);
+  })();
+</script>
+<main class="main">
+  <div class="well">
+    <div class="container">
+      <h1>Publications</h1>
+      <div class="lead">
+        <p>Learn more about the cutting-edge technology behind CogniCrypt</p>
+      </div>
+    </div>
+  </div>
+  <section class="first">
+    <div class="container">
+      <div class="row">
+        {{ range where (.Site.RegularPages.ByPublishDate).Reverse "Section" "publications" }} 
+        <div class="col-md-6" style="min-height: 350px;">
+          <div class="row">
+            <div class="col-md-12">
+              <h3>{{ .Params.title }}</h3>
+              <h4>{{ .Params.conference }}</h4>
+            </div>
+            <div class="col-md-4" style="padding-bottom: 20px">
+              <a href="{{ .Site.BaseURL }}/resources/publications/{{ .Params.link }}">
+              <img src="{{ .Site.BaseURL }}/resources/publications/{{ .Params.img }}" class="img-responsive"/>
+              </a>
+            </div>
+            <div class="col-md-8">
+              <blockquote>
+                {{ .Params.description }}
+              </blockquote>
+              {{ if .Params.award }}
+	              <div>
+    	          &nbsp; &nbsp; &nbsp;<b>Awarded:</b>&nbsp;{{ .Params.award }}
+        	      </div>
+              {{ end }}
+              &nbsp; &nbsp;
+              <a href="{{ .Site.BaseURL }}/resources/publications/{{ .Params.link }}">
+              <img src="{{ .Site.BaseURL }}/assets/images/icon_pdf.png"> PDF 
+              </a>
+            </div>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  <section class="third">
+    <div class="container">
+    </div>
+  </section>
+</main>
+{{ end }}
