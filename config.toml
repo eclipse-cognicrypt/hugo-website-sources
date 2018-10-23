@@ -8,6 +8,12 @@ theme = "hugo-solstice-theme"
   news = "/:sections/:slug/"
   
 [[menu.main]]
+  name = "Publications"
+  weight = -200
+  identifier = "publications"
+  url= "/publications/"
+
+[[menu.main]]
   name = "Downloads"
   weight = -150
   identifier = "downloads"
