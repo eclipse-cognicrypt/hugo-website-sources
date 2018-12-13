@@ -99,6 +99,8 @@ The rule set is also [publicly available](https://github.com/CROSSINGTUD/Crypto-
 - **Cryptographically Secure Random-Number Generation**: 
   Randomness is vital in all aspects of cryptography. Java offers cryptographically secure pseudo-random number generators through `SecureRandom`. As discussed for `PBEKeySpec`, `SecureRandom` often acts as a helper and therefore many rules list the `randomized` predicate in their own `REQUIRES` section.
 
+## Cryptographic Service Providers
+
 JCA framework is based on provider architecture. This means that the implementation of the above cryptographic services are suppied by various providers. Apart from the default Sun provider which comes bundled with JDK we also have specific providers such as Bouncy Castle. Any program can get implementations either from one of installed providers or from a specific provider by refering to its name. Hence *CrySL* rules are being developed for third party providers like Bouncy Castle in order to extend the capabilities of Cognicrypt.
 
 ## CrySL Rules for the Bouncy Castle
@@ -106,3 +108,8 @@ JCA framework is based on provider architecture. This means that the implementat
 The below rule set covers the specifications of most classes in the [Bouncy Castle (BC)](https://github.com/bcgit/bc-java/tree/master/core/src/main/java/org/bouncycastle/crypto). In the following, we describe all the services with their respective classes and briefly summarize important usage constraints. All mentioned classes are defined in the lightweight crypto packages `org.bouncycastle.crypto.*` of the BC.
 
 The rule set is also [publicly available](https://github.com/CROSSINGTUD/Crypto-API-Rules/bc)
+
+- **Asymmetric Key Generation**: 
+  In BC every asymmetric cryptography has a separate key pair generator. For example RSA has `RSAKeyPairGenerator`, DSA has `DSAKeyPairGenerator` and so on. These asymmetric or public/private, cipher key pair generators should conform to an interface `AsymmetricCipherKeyPairGenerator`. Every key pair generator has its corresponding key generation parameters which specify the keys being generated. For example, RSA has `RSAKeyGenerationParameters` and DSA has `DSAKeyGenerationParameters` both of which conforms to its base class `KeyGenerationParameters` 
+- **Symmetric Key Generation**:
+  The BC has a base class named `CipherKeyGenerator` for symmetric or secret, cipher key generators. For example DES has `DESKeyGenerator` which extends the base class to specify the parameters 
