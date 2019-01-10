@@ -114,4 +114,9 @@ The rule set is also [publicly available](https://github.com/CROSSINGTUD/Crypto-
 - **Symmetric Key Generation**:
   The BC has a base class named `CipherKeyGenerator` for symmetric or secret, cipher key generators. Every symmetric algorithm has specific key generator class which extends this base class. For example DES has `DESKeyGenerator` which extends the base class to specify the parameters
 - **Encryption and Decryption**
-  There are two variants of `Cipher` equivalent in Bouncy Castle. One is `BlockCipher` and the other one is `AsymmetricBlockCipher` both of which are interfaces. All the symmetric engines & modes should form to the former interface and all the asymmetric counterparts should adhere to the latter. BC also provides classes named `BufferedBlockCipher` and `BufferedAsymmetricBlockCipher` which are buffer wrappers for block cipher and asymmetric block cipher respectively, allowing the input to be accumulated in a piecemeal fashion until final processing.
+  There are two variants of `Cipher` equivalent in Bouncy Castle. One is `BlockCipher` and the other one is `AsymmetricBlockCipher` both of which are interfaces. All the symmetric engines & modes should form to the former interface and all the asymmetric counterparts should adhere to the latter. BC also provides classes named `BufferedBlockCipher` and `BufferedAsymmetricBlockCipher` which are buffer wrappers for block cipher and asymmetric block cipher respectively, allowing the input to be accumulated in a piecemeal fashion until final processing
+- **Hashing & MACs**´:
+ 
+- **Persisting Keys**:
+
+- **Cryptographically Secure Random-Number Generation**:
