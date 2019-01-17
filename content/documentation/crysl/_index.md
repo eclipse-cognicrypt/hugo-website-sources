@@ -107,7 +107,7 @@ JCA framework is based on provider architecture. This means that the implementat
 
 The below rule set covers the specifications of most classes in the [Bouncy Castle (BC)](https://github.com/bcgit/bc-java/tree/master/core/src/main/java/org/bouncycastle/crypto). In the following, we describe all the services with their respective classes and briefly summarize important usage constraints. All mentioned classes are defined in the lightweight crypto packages `org.bouncycastle.crypto.*` of the BC.
 
-The rule set is also [publicly available](https://github.com/CROSSINGTUD/Crypto-API-Rules/bc)
+The rule set is also [publicly available](https://github.com/CROSSINGTUD/Crypto-API-Rules/tree/bouncy_castle)
 
 - **Asymmetric Key Generation**: 
   In BC every asymmetric cryptography has a separate key pair generator. For example RSA has `RSAKeyPairGenerator`, DSA has `DSAKeyPairGenerator` and so on. These asymmetric or public/private, cipher key pair generators should conform to an interface `AsymmetricCipherKeyPairGenerator`. Every key pair generator has its corresponding key generation parameters which specify the keys being generated. For example, RSA has `RSAKeyGenerationParameters` and DSA has `DSAKeyGenerationParameters` both of which conforms to its base class `KeyGenerationParameters` 
