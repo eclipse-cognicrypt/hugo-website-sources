@@ -90,7 +90,7 @@ The rule set is also [publicly available](https://github.com/CROSSINGTUD/Crypto-
   The class `Signature` of the JCA allows one to digitally sign data and verify a signature based on a private/public key pair. A `Signature` requires the key pair to be correctly generated, hence the rule for `Signature` requires a predicate from the asymmetric-key generation task.
 - **Generation of Initialization Vectors**:
   Initialization vectors (IVs) are used to add entropy to ciphertexts of encryptions. An IV must have enough randomness and must be properly generated. The JCA class `IvParameterSpec` wraps a byte array as an IV and it is required for the array to be randomized by `SecureRandom`. The *CrySL* rule for `IvParameterSpec` requires a predicate `randomized`.
-- **Encryption and Decryption**
+- **Encryption and Decryption**:
   The key component of the JCA is represented by the class `Cipher`, which implements functionality to encrypt or decrypt data. Depending on the used algorithms, modes and paddings must be selected and keys and initialization vectors must be properly generated. Hence, the complete *CrySL* rule for `Cipher` requires many other cryptographic services to be executed securely earlier and list them in its respective `REQUIRES` clause.
 - **Hashing & MACs**´:
   There are two forms of cryptographic hash functions. A MAC is an authenticated hash that requires a symmetric keys, but there are also keyless hash functions such as MD5 or SHA-256. The JCA's class `Mac` implements functionality for mac-ing, while keyless hashes are computed by `MessageDigest`. 
@@ -110,13 +110,12 @@ The below rule set covers the specifications of most classes in the [Bouncy Cast
 The rule set is also [publicly available](https://github.com/CROSSINGTUD/Crypto-API-Rules/tree/bouncy_castle)
 
 - **Asymmetric Key Generation**: 
-  In BC every asymmetric cryptography has a separate key pair generator. For example RSA has `RSAKeyPairGenerator`, DSA has `DSAKeyPairGenerator` and so on. These asymmetric or public/private, cipher key pair generators should conform to an interface `AsymmetricCipherKeyPairGenerator`. Every key pair generator has its corresponding key generation parameters which specify the keys being generated. For example, RSA has `RSAKeyGenerationParameters` and DSA has `DSAKeyGenerationParameters` both of which conforms to its base class `KeyGenerationParameters` 
+  In BC every asymmetric cryptography has a separate key pair generator. For example RSA has `RSAKeyPairGenerator`, DSA has `DSAKeyPairGenerator` and so on. These asymmetric or public/private, cipher key pair generators should conform to an interface `AsymmetricCipherKeyPairGenerator`. Every key pair generator has its corresponding key generation parameters which specify the keys being generated. For example, RSA has `RSAKeyGenerationParameters` and DSA has `DSAKeyGenerationParameters` both of which conforms to its base class `KeyGenerationParameters`.
 - **Symmetric Key Generation**:
-  The BC has a base class named `CipherKeyGenerator` for symmetric or secret, cipher key generators. Every symmetric algorithm has specific key generator class which extends this base class. For example DES has `DESKeyGenerator` which extends the base class to specify the parameters
-- **Encryption and Decryption**
-  There are two variants of `Cipher` equivalent in Bouncy Castle. One is `BlockCipher` and the other one is `AsymmetricBlockCipher` both of which are interfaces. All the symmetric engines & modes should conform to the former interface and all the asymmetric counterparts should adhere to the latter. BC also provides classes named `BufferedBlockCipher` and `BufferedAsymmetricBlockCipher` which are buffer wrappers for block cipher and asymmetric block cipher respectively, allowing the input to be accumulated in a piecemeal fashion until final processing
+  The BC has a base class named `CipherKeyGenerator` for symmetric or secret, cipher key generators. Every symmetric algorithm has specific key generator class which extends this base class. For example DES has `DESKeyGenerator` which extends the base class to specify the parameters.
+- **Encryption and Decryption**:
+  There are two variants of `Cipher` equivalent in Bouncy Castle. One is `BlockCipher` and the other one is `AsymmetricBlockCipher` both of which are interfaces. All the symmetric engines & modes should conform to the former interface and all the asymmetric counterparts should adhere to the latter. BC also provides classes named `BufferedBlockCipher` and `BufferedAsymmetricBlockCipher` which are buffer wrappers for block cipher and asymmetric block cipher respectively, allowing the input to be accumulated in a piecemeal fashion until final processing.
 - **Hashing & MACs**´:
- 
-- **Persisting Keys**:
-
+  The BC has a base interface named `Mac` for implementations of message authentication codes (MACs) and `Digest` for implementations of keyless hashing.
 - **Cryptographically Secure Random-Number Generation**:
+  The BC uses Java offered cryptographically secure pseudo-random number generator `SecureRandom` for randomness.
