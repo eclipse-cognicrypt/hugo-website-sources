@@ -116,6 +116,6 @@ The rule set is also [publicly available](https://github.com/CROSSINGTUD/Crypto-
 - **Encryption and Decryption**:
   There are two variants of `Cipher` equivalent in Bouncy Castle. One is `BlockCipher` and the other one is `AsymmetricBlockCipher` both of which are interfaces. All the symmetric engines & modes should conform to the former interface and all the asymmetric counterparts should adhere to the latter. BC also provides classes named `BufferedBlockCipher` and `BufferedAsymmetricBlockCipher` which are buffer wrappers for block cipher and asymmetric block cipher respectively, allowing the input to be accumulated in a piecemeal fashion until final processing.
 - **Hashing & MACs**´:
-  The BC has a base interface named `Mac` for implementations of message authentication codes (MACs) and `Digest` for implementations of keyless hashing.
+  The BC has a base interface named `Mac` for implementations of message authentication codes (MACs) and `Digest` for implementations of hashing.
 - **Cryptographically Secure Random-Number Generation**:
   The BC uses Java offered cryptographically secure pseudo-random number generator `SecureRandom` for randomness.
