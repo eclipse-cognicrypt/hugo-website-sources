@@ -19,9 +19,7 @@ Any contributions - no matter whether they are bug fixes or new features - are v
 
 # Cryptographic Components
 
-In general, crypto experts can contribute in two ways:
-* First, they can contribute support for new cryptographic primitives (e.g., encryption schemes, key agreement algorithms, digital signature algorithms). 
-* Second, they can integrate new cryptographic use cases for CogniCrypt to offer to the users for code generation.
+In general, crypto experts can contribute in two ways. First, they can contribute support for new cryptographic primitives (e.g., encryption schemes, key agreement algorithms, digital signature algorithms). Second, they can integrate new cryptographic use cases for CogniCrypt to offer to the users for code generation.
 
 
 In the context of CogniCrypt, these use cases are called **tasks**. Examples for cryptographic tasks that CogniCrypt already supports  include:  **file encryption**, **communication over secure channel**, and **user authentication mechanisms**. Depending on how a task is integrated, it can use primitives that have been integrated before. However primitives are not directly exposed to the end user. For easier distinction, this guide separates:
