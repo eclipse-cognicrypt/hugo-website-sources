@@ -118,4 +118,4 @@ The rule set is also [publicly available](https://github.com/CROSSINGTUD/Crypto-
 - **Hashing & MACs**´:
   The BC has a base interface named `Mac` for implementations of message authentication codes (MACs) and `Digest` for implementations of hashing.
 - **Cryptographically Secure Random-Number Generation**:
-  The BC uses Java offered cryptographically secure pseudo-random number generator `SecureRandom` for randomness.
+
