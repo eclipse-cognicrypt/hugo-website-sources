@@ -76,6 +76,9 @@ ENSURES
 
 Above is an excerpt of the rule for `SecretKeySpec`. The predicate `generatedKey` is listed within the `ENSURES` block of this rule. The static analysis labels any object of type `SecretKeySpec` by `generatedKey` when the analysis finds the object to be used correctly (with respect to its *CrySL* rule).
 
+## Addition or Modification of CrySL Rules
+All the *CrySL* rules currently used by the crypto assistant CogniCrypt are present in the repo named [Crypto-API-Rules](https://github.com/CROSSINGTUD/Crypto-API-Rules). You need to clone this repo and import it as a maven project in the eclipse where you have already installed CogniCrypt & *CrySL* plugins. These plugins lets you update the *CrySL* rules on the fly. Please note that the target project must been in the same eclipse instance where the *CrySL-Examples* project is imported. In the imported project you can find separate packages for every service provider namely JCA, Google Tink & BouncyCastle in which you can find a list of `.cryptsl` files which specifies the rules of different classes corresponding to specific provider. You can edit them or even add a new rule and save all your changes. Now you simply have to re-run CogniCrypt on your target project and the plugin would use the previously modified ruleset which has been saved.
+
 ## CrySL Rules for the JCA
 
 CogniCrypt ships with a pre-defined set of *CrySL* rules. The standard rule set covers the correct specification of most classes of the [Java Cryptographic Architecture (JCA)](https://docs.oracle.com/javase/8/docs/technotes/guides/security/crypto/CryptoSpec.html). The JCA offers various cryptographic services. In the following, we describe these services with their respective classes and briefly summarize important usage constraints. All mentioned classes are defined in the packages `javax.crypto` and `java.security` of the JCA. 
@@ -99,3 +102,23 @@ The rule set is also [publicly available](https://github.com/CROSSINGTUD/Crypto-
 - **Cryptographically Secure Random-Number Generation**: 
   Randomness is vital in all aspects of cryptography. Java offers cryptographically secure pseudo-random number generators through `SecureRandom`. As discussed for `PBEKeySpec`, `SecureRandom` often acts as a helper and therefore many rules list the `randomized` predicate in their own `REQUIRES` section.
 
+## Cryptographic Service Providers
+
+JCA framework is based on provider architecture. This means that the implementation of the above cryptographic services are suppied by various providers. Apart from the default Sun provider which comes bundled with JDK we also have specific providers such as Bouncy Castle. Any program can get implementations either from one of installed providers or from a specific provider by refering to its name. Hence *CrySL* rules are being developed for third party providers like Bouncy Castle in order to extend the capabilities of Cognicrypt.
+
+## CrySL Rules for the Bouncy Castle
+
+The below rule set covers the specifications of most classes in the [Bouncy Castle (BC)](https://github.com/bcgit/bc-java/tree/master/core/src/main/java/org/bouncycastle/crypto). In the following, we describe all the services with their respective classes and briefly summarize important usage constraints. All mentioned classes are defined in the lightweight crypto packages `org.bouncycastle.crypto.*` of the BC.
+
+The rule set is also [publicly available](https://github.com/CROSSINGTUD/Crypto-API-Rules/tree/bouncy_castle)
+
+- **Asymmetric Key Generation**: 
+  In BC every asymmetric cryptography has a separate key pair generator. For example RSA has `RSAKeyPairGenerator`, DSA has `DSAKeyPairGenerator` and so on. These asymmetric or public/private, cipher key pair generators should conform to an interface `AsymmetricCipherKeyPairGenerator`. Every key pair generator has its corresponding key generation parameters which specify the keys being generated. For example, RSA has `RSAKeyGenerationParameters` and DSA has `DSAKeyGenerationParameters` both of which conforms to its base class `KeyGenerationParameters`.
+- **Symmetric Key Generation**:
+  The BC has a base class named `CipherKeyGenerator` for symmetric or secret, cipher key generators. Every symmetric algorithm has specific key generator class which extends this base class. For example DES has `DESKeyGenerator` which extends the base class to specify the parameters.
+- **Encryption and Decryption**:
+  There are two variants of `Cipher` equivalent in Bouncy Castle. One is `BlockCipher` and the other one is `AsymmetricBlockCipher` both of which are interfaces. All the symmetric engines & modes should conform to the former interface and all the asymmetric counterparts should adhere to the latter. BC also provides classes named `BufferedBlockCipher` and `BufferedAsymmetricBlockCipher` which are buffer wrappers for block cipher and asymmetric block cipher respectively, allowing the input to be accumulated in a piecemeal fashion until final processing.
+- **Hashing & MACs**´:
+  The BC has a base interface named `Mac` for implementations of message authentication codes (MACs) and `Digest` for implementations of hashing.
+- **Cryptographically Secure Random-Number Generation**:
+  The BC uses Java offered cryptographically secure pseudo-random number generator `SecureRandom` for randomness.
