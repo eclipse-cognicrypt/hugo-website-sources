@@ -14,7 +14,15 @@ In case you find a bug or have an idea for a feature, please check out [CogniCry
 
 # Code Contributions <a name="code"></a>
 
-Any contributions - no matter whether they are bug fixes or new features - are very welcome. That being said, since CogniCrypt is an official Eclipse project, only official committers may contribute directly to the repository without any review. Commits from non-committers are possible, but must be reviewed by someone with committer status and come in a certain form, described by the [Eclipse manual](https://www.eclipse.org/projects/handbook/#resources-commit). In short, apart from the usual *author* tag, each commit needs to come with a *signed-off-by* tag at the bottom of the commit message. Pull requests that contain commits from non-committers not following this structure may not be accepted. Note: Regular long-time contributors who wish to continue contributing may apply to project-committer status.
+Any contributions - no matter whether they are bug fixes or new features - are very welcome. That being said, since CogniCrypt is an official Eclipse project, only official committers may contribute directly to the repository without any review. Commits from non-committers are possible, but must be reviewed by someone with committer status and come in a certain form, described by the [Eclipse manual](https://www.eclipse.org/projects/handbook/#resources-commit). In short, apart from the usual author tag, each commit needs to come with a signed-off-by tag at the bottom of the commit message. Pull requests that contain commits from non-committers not following this structure may not be accepted.
+For that matter the following steps must be done:
+1.    Create an account on [Eclipse Foundation](https://accounts.eclipse.org/) with the same E-mail address as your Git account.
+2.    Complete the form and apply for an ECA license for your account.
+3.    Sign each commit with your e-mail address “git commit -s -m “….”.
+
+For more information please check [this](https://wiki.eclipse.org/Development_Resources/Contributing_via_Git).
+
+Note: Regular long-time contributors who wish to continue contributing may apply to project-committer status.
 
 
 # Cryptographic Components
