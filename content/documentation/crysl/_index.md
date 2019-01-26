@@ -80,7 +80,27 @@ Above is an excerpt of the rule for `SecretKeySpec`. The predicate `generatedKey
 All the *CrySL* rules currently used by the crypto assistant CogniCrypt are present in the repo named [Crypto-API-Rules](https://github.com/CROSSINGTUD/Crypto-API-Rules). You need to clone this repo and import it as a maven project in the eclipse where you have already installed CogniCrypt & *CrySL* plugins. These plugins lets you update the *CrySL* rules on the fly. Please note that the target project must been in the same eclipse instance where the *CrySL-Examples* project is imported. In the imported project you can find separate packages for every service provider namely JCA, Google Tink & BouncyCastle in which you can find a list of `.cryptsl` files which specifies the rules of different classes corresponding to specific provider. You can edit them or even add a new rule and save all your changes. Now you simply have to re-run CogniCrypt on your target project and the plugin would use the previously modified ruleset which has been saved.
 
 <div class="imgbox">
-    <img class="center-fit" src='\images\1_correct_code.png' alt="An example code without any misuse">
+    <img class="center-fit" src='/images/1_correct_code.png' alt="An example code without any misuse">
+</div>
+
+<div class="imgbox">
+    <img class="center-fit" src='/images/2_misuse_code.png' alt="Misuse of key size">
+</div>
+
+<div class="imgbox">
+    <img class="center-fit" src='/images/3_error_markers.png' alt="Static Analzer reports error markers">
+</div>
+
+<div class="imgbox">
+    <img class="center-fit" src='/images/4_original_rule.png' alt="Original crySL rule for KeyGenerator class">
+</div>
+
+<div class="imgbox">
+    <img class="center-fit" src='/images/5_modified_rule.png' alt="Modified crySL rule for KeyGenerator class">
+</div>
+
+<div class="imgbox">
+    <img class="center-fit" src='/images/6_error_markers_disappear.png' alt="Static Analzer doesn't report error markers">
 </div>
 
 
