@@ -88,7 +88,7 @@ All the *CrySL* rules currently used by the crypto assistant CogniCrypt are pres
 </div>
 
 <div class="imgbox">
-    <img class="center-fit" src='/images/3_error_markers.png' alt="Static Analzer reports error markers">
+    <img class="center-fit" src='/images/3_error_markers.png' alt="Static Analyzer reports error markers">
 </div>
 
 <div class="imgbox">
@@ -100,7 +100,7 @@ All the *CrySL* rules currently used by the crypto assistant CogniCrypt are pres
 </div>
 
 <div class="imgbox">
-    <img class="center-fit" src='/images/6_error_markers_disappear.png' alt="Static Analzer doesn't report error markers">
+    <img class="center-fit" src='/images/6_error_markers_disappear.png' alt="Static Analyzer doesn't report error markers">
 </div>
 
 
