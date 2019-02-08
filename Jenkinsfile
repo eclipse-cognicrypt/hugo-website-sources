@@ -23,6 +23,7 @@ spec:
   options {
     buildDiscarder(logRotator(numToKeepStr: '5'))
     checkoutToSubdirectory('hugo')
+    disableConcurrentBuilds()
   }
 
   triggers {
