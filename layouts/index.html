@@ -71,7 +71,8 @@
               </div>
               -->
           </div>
-        </div>    
+        </div>  
+
         <section class="working-group col-md-4 line-divider-left">
           <h1 class="green">Main Contributors</h1>
           <p>CogniCrypt originated in TU Darmstadt's <a href="https://www.crossing.tu-darmstadt.de/crc_1119/index.en.jsp" target="_blank">Collaborative Research Center CROSSING</a> but by now its development is managed in an international collaboration between several research institutes. <a href="/contributing"><strong>Join Us</strong></a>!
@@ -79,6 +80,36 @@
           <p><a href="{{ .Site.BaseURL }}/contributing/" class="btn btn-primary">Ecosystem</a>
           </p>
         </section>
+      <h4>Generous financial support is provided by:</h4>
+      <div class="col-md-8 logos">
+          <div class="row" style="margin-top:-37px;">
+            {{ range where ( where .Site.RegularPages.ByTitle  "Section" "supporter" ) ".Params.is_steering" "==" true }}
+            <div class="col-md-4 col-xs-6 sc-member" style="padding:20px 60px; display:none;">
+              <div style="height: 120px; line-height: 120px; ">
+                <a href="{{ .Params.more_url }}" target="_blank">
+                <!--<a href="http://eclipse.org/supportership/showsupporter.php?supporter_id={{ .Params.supporter_id }}" target="_blank">-->
+                <img src="assets/images/supporters/logo-{{ .Params.logo }}.png" class="img-responsive" alt="logo-{{ .Title}}" style="max-height:110px; display:inline-block; vertical-align:middle;">
+                </a>
+              </div>
+            </div>
+            {{ end }}
+            {{ range where ( where .Site.RegularPages.ByTitle  "Section" "supporter" ) ".Params.is_steering" "==" false }}
+            <div class="col-md-4 col-xs-6 regular-member" style="padding:20px 60px; display:none;">
+              <div style="height: 120px; line-height: 120px; ">
+                <a href="{{ .Params.more_url }}" target="_blank">
+                <!--<a href="http://eclipse.org/supportership/showsupporter.php?supporter_id={{ .Params.supporter_id }}" target="_blank">-->
+                <img src="assets/images/supporters/logo-{{ .Params.logo }}.png" class="img-responsive" alt="logo-{{ .Title}}" style="max-height:110px; display:inline-block; vertical-align:middle;">
+                </a>
+              </div>
+            </div>
+            {{ end }}
+            <!-- <div class="col-md-12">
+              <p class="align-center"><a href="/ecosystem.html" class="btn btn-primary">More</a>
+              </p>
+              </div>
+              -->
+          </div>
+        </div>    
       </div>
     </div>
   </section>
