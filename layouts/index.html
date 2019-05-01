@@ -80,8 +80,8 @@
           <p><a href="{{ .Site.BaseURL }}/contributing/" class="btn btn-primary">Ecosystem</a>
           </p>
         </section>
-      <h4>Generous financial support is provided by:</h4>
       <div class="col-md-8 logos">
+      <h4>Generous financial support is provided by:</h4>
           <div class="row" style="margin-top:-37px;">
             {{ range where ( where .Site.RegularPages.ByTitle  "Section" "supporter" ) ".Params.is_steering" "==" true }}
             <div class="col-md-4 col-xs-6 sc-member" style="padding:20px 60px; display:none;">
