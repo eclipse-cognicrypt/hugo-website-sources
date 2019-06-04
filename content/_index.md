@@ -2,7 +2,7 @@
 title: "CogniCrypt - Secure Integration of Cryptographic Software"
 ---
 
-A large number of recent studies have shown that most software applications that use cryptographic procedures misuse them in an unsafe manner. The VeraCode Report <a href="https://www.veracode.com/state-software-security-2017" target="_blank">State of the Software Security 2017</a> lists the unsafe use of cryptography as the second most common cause of software vulnerabilities, right after data leakage.
+A large number of recent studies have shown that most software applications that use cryptographic procedures misuse them. The VeraCode Report <a href="https://www.veracode.com/state-software-security-2017" target="_blank">State of the Software Security 2017</a> lists the insecure use of cryptography as the second most common cause of software vulnerabilities, right after data leakage.
 
 Eclipse CogniCrypt was developed within the collaborative research center CROSSING of  Technische Universität Darmstadt. It allows developers to quickly identify and fix security-critical misuses of crytographic libraries.
 
@@ -12,7 +12,7 @@ The plugin Eclipse CogniCrypt ships in two main components: A wizard for **code 
 
 # Code Generation
 
-The Code Generation Feature of CogniCrypt is designed as a wizard that guides developers to select the correct cryptographic algorithms for their cryptographic task at hand. The wizard asks high level questions regarding the task and the data formats the developer needs to encrypt. The [user documentation](./documentation/codegen) discusses the wizard in more detail.
+The Code Generation Feature of CogniCrypt is designed as a wizard that guides developers to select the correct cryptographic algorithms for their cryptographic use case at hand. The wizard asks high-level questions related the use case in order to tailor the solution to the user's needs. The [user documentation](./documentation/codegen) discusses the wizard in more detail.
 
 <p align="center">
 
@@ -37,4 +37,4 @@ The video below shows a minimal example demonstrating the static code analysis w
   Sie können ihn unter <a href="#">Link-Addresse</a> abrufen.
 </video> 
 </p>
-In the Example, the developer creates a `Cipher` object and supplies the `String "AES"` as argument to configure using the encryption algorithm `AES`. They save their code and are warned instantaniously by CogniCrypt. By default, the algorithm `AES` encrypts with the insecure block mode `ECB` and does not use any padding. The developer changes the `Cipher` object to be cofigures in a secure way (using the `String "AES/CBC/PKCS5Padding"` which tells to use a secure block mode `"CBC"` and a correct padding mode). CogniCrrypt's error message disappears. For a more in-depth explanation, please check out the [user documentation](./documentation/codeanalysis).
+In the example, the developer creates a `Cipher` object and supplies the `String "AES"` as argument to configure using the encryption algorithm `AES`. They save their code and are warned instantaniously by CogniCrypt. By default, the algorithm `AES` encrypts with the insecure block mode `ECB`. The developer changes the `Cipher` object to be configured in a secure way (using the `String "AES/CBC/PKCS5Padding"` which requests from the provder a secure block mode `"CBC"` and a correct padding mode). CogniCrypt's error message disappears. For a more in-depth explanation, please check out the [user documentation](./documentation/codeanalysis).
