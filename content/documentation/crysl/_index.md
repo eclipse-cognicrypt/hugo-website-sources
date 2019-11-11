@@ -82,37 +82,37 @@ All *CrySL* rules currently used by CogniCrypt are present in the repository nam
 The below tutorial describes how to modify *CrySL* rules on the fly. The first screenshot shows an example code which uses `KeyGenerator` that is created with correct algorithm, namely "AES", and later initialized with a proper keySize i.e. 128. Hence the plugin doesn't show any error markers.
 
 <div class="imgbox">
-    <img class="center-fit" src='/content/documentation/crysl/images/1_correct_code.png' alt="An example code without any misuse">
+    <img class="center-fit" src='./images/correctcode.png' alt="An example code without any misuse">
 </div>
 
 Now let us change the `keySize` to a incorrect value (Eg. 200) as shown in second screenshot. The plugin displays a error marker upon saving the changes. 
 
 <div class="imgbox">
-    <img class="center-fit" src='/content/documentation/crysl/images/2_misuse_code.png' alt="Misuse of key size">
+    <img class="center-fit" src='./images/2_misuse_code.png' alt="Misuse of key size">
 </div>
 
 The below screenshot shows the value of error marker displayed by the plugin.
 
 <div class="imgbox">
-    <img class="center-fit" src='/content/documentation/crysl/images/3_error_markers.png' alt="Static Analyzer reports error markers">
+    <img class="center-fit" src='./images/3_error_markers.png' alt="Static Analyzer reports error markers">
 </div>
 
 The following screenshot shows the original *CrySL* rule for `KeyGenerator` class. 
 
 <div class="imgbox">
-    <img class="center-fit" src='/content/documentation/crysl/images/4_original_rule.png' alt="Original crySL rule for KeyGenerator class">
+    <img class="center-fit" src='./images/4_original_rule.png' alt="Original crySL rule for KeyGenerator class">
 </div>
 
 Now let us modify the *CrySL* rule of `KeyGenerator` class so that the `init` method also takes 200 as its `keySize` and later save the corresponding changes.
 
 <div class="imgbox">
-    <img class="center-fit" src='/content/documentation/crysl/images/5_modified_rule.png' alt="Modified crySL rule for KeyGenerator class">
+    <img class="center-fit" src='./images/5_modified_rule.png' alt="Modified crySL rule for KeyGenerator class">
 </div>
 
 Upon saving the new *CrySL* rule, the plugin would re-run the analysis based your new rules. Consequently, no error markers would be displayed as shown below.
 
 <div class="imgbox">
-    <img class="center-fit" src='/content/documentation/crysl/images/6_error_markers_disappear.png' alt="Static Analyzer doesn't report error markers">
+    <img class="center-fit" src='./images/6_error_markers_disappear.png' alt="Static Analyzer doesn't report error markers">
 </div>
 
 
