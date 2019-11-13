@@ -16,6 +16,14 @@ spec:
       command:
       - cat
       tty: true
+    - name: jnlp
+      volumeMounts:
+      - name: volume-known-hosts
+        mountPath: /home/jenkins/.ssh
+  volumes:
+  - name: volume-known-hosts
+    configMap:
+      name: known-hosts
 """
     }
   }
