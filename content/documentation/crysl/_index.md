@@ -3,6 +3,12 @@ title: "The CrySL Language"
 date: 2018-09-03T19:48:11+02:00
 ---
 
+<div class="alert alert-info" role="alert">
+
+Thanks to Theofilos Petsios from Amazon Web Services for providing a definition file for syntax highlighting for CrySL in VIM. You can <a href="https://github.com/nettrino/vim_CrySL">download the definitions here</a>.
+
+</div>
+
 The [static analysis](/cognicrypt/documentation/codeanalysis) is based on *CrySL rules* that specify the *correct* use of an application programming interface (API). *CrySL* is a domain-specific language that allows to specify usage patterns of APIs. The static analysis reports any deviations from the usage pattern defined within the rules. 
 
 ## Syntax of the Domain-Specific Language CrySL
