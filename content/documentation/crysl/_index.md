@@ -3,11 +3,11 @@ title: "The CrySL Language"
 date: 2018-09-03T19:48:11+02:00
 ---
 
-The [static analysis](/cognicrypt/documentation/codeanalysis) is based on *CrySL rules* that specify the *correct* use of an application programming interface (API). *CrySL* is a domain-specific language that allows to specify usage patterns of APIs. The static analysis reports any deviations from the usage pattern defined within the rules. 
+Both [CogniCrypt<sub>GEN</sub>](/cognicrypt/documentation/codegen) and [CogniCrypt<sub>SAST</sub>](/cognicrypt/documentation/codeanalysis) are based on *CrySL rules* that specify the *correct* use of an application programming interface (API). *CrySL* is a domain-specific language that allows to specify usage patterns of APIs. CogniCrypt<sub>GEN</sub> generates code using the rules, CogniCrypt<sub>SAST</sub> in turn reports any deviations from the usage pattern defined within the rules. 
 
 ## Syntax of the Domain-Specific Language CrySL
 
-CogniCrypt's error markers are generated based on violations of *rules*. Rules in CogniCrypt are written in *CrySL*. *CrySL* is a domain-specific language for the specification of correct cryptograhy API uses in Java. The Eclipse plugin CogniCrypt ships with an XText editor that supports the *CrySL* syntax. *CrySL* generally encodes a white-list approach and specifies how to *correctly* use crypto APIs. We discuss some of the most important concepts of the rule language here, the [research paper](http://drops.dagstuhl.de/opus/volltexte/2018/9215/pdf/LIPIcs-ECOOP-2018-10.pdf) provides more detailed insides on the language. CogniCrypt ships with a default rule set for the [Java Cryptographic Architecture (JCA)](https://docs.oracle.com/javase/8/docs/technotes/guides/security/crypto/CryptoSpec.html). At the bottom of this page, you may find a description of this rule set.
+Rules in CogniCrypt are written in *CrySL*. *CrySL* is a domain-specific language for the specification of correct cryptography API uses in Java. The Eclipse plugin CogniCrypt ships with an XText editor that supports the *CrySL* syntax. *CrySL* generally encodes a white-list approach and specifies how to *correctly* use crypto APIs. We discuss some of the most important concepts of the rule language here, the [research paper](http://drops.dagstuhl.de/opus/volltexte/2018/9215/pdf/LIPIcs-ECOOP-2018-10.pdf) provides more detailed insights on the language. CogniCrypt ships with a default rule set for the [Java Cryptographic Architecture (JCA)](https://docs.oracle.com/en/java/javase/14/security/java-cryptography-architecture-jca-reference-guide.html). At the bottom of this page, you may find a description of this rule set. On top of this rule set, rule sets for [BouncyCastle](https://www.bouncycastle.org/documentation.html), both for its lightweight API as well as JCA provider, and [Google Tink](https://github.com/google/tink) are available for download from within the CogniCrypt preferences. Custom rules may also be added.
 
 Each *CrySL* rule is a specification of a single Java class. A short example of a *CrySL* rule for `javax.crypto.Cipher` is shown below. 
 
@@ -26,8 +26,8 @@ ORDER
 	Get, Init, (doFinal)+ 
 CONSTRAINTS  
 	encmode in {1,2,3,4};
-	part(0, "/", trans) in {"AES", "Blowfish", "DESede", ..., "RSA"};
-	part(0, "/", trans) in {"AES"} => part(1, "/", trans) in {"CBC"};
+	alg(trans) in {"AES", ..., "RSA"};
+	alg(trans) in {"AES"} => mode(trans) in {"CBC"};
 REQUIRES 
 	generatedKey[key, part(0, "/", trans)];
 ENSURES 
@@ -39,7 +39,7 @@ Within the `CONSTRAINTS` block each rule lists `Integer` and `String` constraint
 
 ### The CONSTRAINTS section
 
-The `Cipher` rule lists `encmode in {1,2,3,4};` within its `CONSTRAINTS` block. The value `encmode` that is passed to method `init(encmode, cert)` is restricted to be one of the four integers. In other terms, whenever the function `init` is called, the value passed in as first parameter must be in the respective set.  The constraint `part(0, "/", trans) in {"AES", "Blowfish", "DESede", ..., "RSA"}`  refers to the fact that at the call to `Cipher.getInstance(trans)` the `String trans` must be correctly formed. The function `part(0, "/", trans)` splits the `String` at the character `"/"` and returns the first part. Hence the constraint restricts the first part prior of any `"/"` to be either `"AES"` or `"RSA"`. The third constraint (`part(0, "/", trans) in {"AES"} => part(1, "/", trans) in {"CBC"};`) is a conditional constraint: If the first part of `trans` is `"AES"`, then the second part of `trans` must be `"CBC"`. For example, this conditional rule warns a developer writing `Cipher.getInstance("AES/ECB/PKCS5Padding")` instead of `Cipher.getInstance("AES/CBC/PKCS5Padding")`. 
+The `Cipher` rule lists `encmode in {1,2,3,4};` within its `CONSTRAINTS` block. The value `encmode` that is passed to method `init(encmode, cert)` is restricted to be one of the four integers. In other terms, whenever the function `init` is called, the value passed in as first parameter must be in the respective set.  The constraint `alg(trans) in {"AES", ..., "RSA"}`  refers to the fact that at the call to `Cipher.getInstance(trans)` the `String trans` must be correctly formed. Hence the constraint restricts the algorithm to be either `"AES"` or `"RSA"` through the `alg` function. The third constraint (`alg(trans) in {"AES"} => mode(trans) in {"CBC"};`) is a conditional constraint: If the algorithm of `trans` is `"AES"`, then the mode of `trans` must be `"CBC"`. For example, this conditional rule warns a developer writing `Cipher.getInstance("AES/ECB/PKCS5Padding")` instead of `Cipher.getInstance("AES/CBC/PKCS5Padding")`. 
 
 ### The ORDER section
 
@@ -76,10 +76,10 @@ ENSURES
 
 Above is an excerpt of the rule for `SecretKeySpec`. The predicate `generatedKey` is listed within the `ENSURES` block of this rule. The static analysis labels any object of type `SecretKeySpec` by `generatedKey` when the analysis finds the object to be used correctly (with respect to its *CrySL* rule).
 
-## Addition or Modification of CrySL Rules
-All *CrySL* rules currently used by CogniCrypt are present in the repository named [Crypto-API-Rules](https://github.com/CROSSINGTUD/Crypto-API-Rules). As of June 2019, it contains three project, one each for the APIs of Java Cryptography Architecture, Google Tink, and BouncyCastle through its lightweight API. You need to clone the corresponding project and import it as a maven project into Eclipse where you have already installed CogniCrypt and the *CrySL* plugins. These plugins let you update the *CrySL* rules on the fly. You can edit them or even add new rules. CogniCrypt automatically parses these rules and takes them into account in any future analyses.
+## On-the-fly Addition or Modification of CrySL Rules
+All *CrySL* rules currently used by CogniCrypt are present in the repository named [Crypto-API-Rules](https://github.com/CROSSINGTUD/Crypto-API-Rules). As of April 2020, it contains rules for the four APIs mentioned above. You need to clone the corresponding project and import it as a Maven project into Eclipse where you have already installed CogniCrypt and the *CrySL* plugins. These plugins let you update the *CrySL* rules on the fly. You can edit them or even add new rules. CogniCrypt automatically parses these rules and may take them into account in any future analyses and code generations. You need to enable this feature in the CogniCrypt preferences first, though.
 
-The below tutorial describes how to modify *CrySL* rules on the fly. The first screenshot shows an example code which uses `KeyGenerator` that is created with correct algorithm, namely "AES", and later initialized with a proper keySize i.e. 128. Hence the plugin doesn't show any error markers.
+The below tutorial describes how to modify *CrySL* rules on the fly. The first screenshot shows an example code which uses `KeyGenerator` that is created with correct algorithm, namely "AES", and later initialized with a proper keySize i.e. 128. Hence, the plugin doesn't show any error markers.
 
 <div class="imgbox">
     <img class="center-fit" src='./images/correctcode.png' alt="An example code without any misuse">
@@ -138,10 +138,6 @@ The rule set is also [publicly available](https://github.com/CROSSINGTUD/Crypto-
   Securely storing key material is an important cryptographic task for confidentiality and integrity of the encrypted data. The JCA class `KeyStore` supports  developers in this task and stores the key material.
 - **Cryptographically Secure Random-Number Generation**: 
   Randomness is vital in all aspects of cryptography. Java offers cryptographically secure pseudo-random number generators through `SecureRandom`. As discussed for `PBEKeySpec`, `SecureRandom` often acts as a helper and therefore many rules list the `randomized` predicate in their own `REQUIRES` section.
-
-## Cryptographic Service Providers
-
-The JCA is employing a provider architecture. This means that the implementation of the above cryptographic services are supplied by various providers. Apart from the default providers that come bundled with JDK, there also custom providers not provided by Oracle. Any program can get implementations either from one of installed providers or from a specific provider by referring to its name. Hence *CrySL* rules are being developed for third party providers like Bouncy Castle in order to extend the capabilities of Cognicrypt.
 
 ## CrySL Rules for the Bouncy Castle
 
