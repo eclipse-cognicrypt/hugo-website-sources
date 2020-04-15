@@ -10,6 +10,16 @@ The plugin Eclipse CogniCrypt ships in two main components: A wizard for **code 
 
 ![Overview over CogniCrypt](images/home_codegen_codeanalysis.png)
 
+            
+# Jobs
+
+<div class="alert alert-info" role="alert">
+
+We currently have several openings for full-time research staff and software developers who will help us bring CogniCrypt to the next level. The openings are located both at Paderborn and Darmstadt. Please contact <a href="mailto:eric.bodden@upb.de?subject=CogniCrypt%20Job%20Offering">Eric Bodden</a> for further information.
+
+</div>
+
+
 # Code Generation
 
 The Code Generation Feature of CogniCrypt is designed as a wizard that guides developers to select the correct cryptographic algorithms for their cryptographic use case at hand. The wizard asks high-level questions related the use case in order to tailor the solution to the user's needs. The [user documentation](./documentation/codegen) discusses the wizard in more detail.
