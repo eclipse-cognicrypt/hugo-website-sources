@@ -3,7 +3,7 @@ title: "Static Code Analysis"
 date: 2018-09-03T19:48:11+02:00
 ---
 
-CogniCrypt's static analysis automatically runs on the code within Eclipse. The static analysis is based on `CrySL rules` that specify the *correct* use of an application programming interface (API). `CrySL` is a domain-specific language that allows to specify usage patterns of APIs. The static analysis reports any deviations from the usage pattern defined within the rules. 
+CogniCrypt's static analysis CogniCrypt<sub>SAST</sub> automatically runs on the code within Eclipse. The static analysis is based on `CrySL rules` that specify the *correct* use of an application programming interface (API). `CrySL` is a domain-specific language that allows to specify usage patterns of APIs. The static analysis reports any deviations from the usage pattern defined within the rules. 
 
 While the `CrySL` rules are adjustable, a user of CogniCrypt is not expected to change the rules of CogniCrypt. 
 
