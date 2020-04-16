@@ -5,7 +5,7 @@ date: 2018-09-03T19:48:11+02:00
 
 CogniCrypt comprises two features to assist in the usage of cryptographic APIs. First, its code generator CogniCrypt<sub>GEN</sub> may generate code wrappers around cryptographic APIs that implement programming tasks involving cryptography. Currently, CogniCrypt<sub>GEN</sub> supports code generation for five such tasks. CogniCrypt also employs a suite of static code analyses CogniCrypt<sub>SAST</sub> constantly running the background and checking for misuses of cryptographic APIs. Thanks to its tight integration with Eclipse, developers are being alerted of misuses by means of regular Eclipse error markers. Both CogniCrypt<sub>GEN</sub> and CogniCrypt<sub>SAST</sub> are parameterized and configured by rules in the specification languge CrySL. For more details on all three, please refer to their corresponding tutorial pages:
 
-* [CrySL - Usage Specifications for Cryptographic APIs](code-generation)
+* [CrySL - Usage Specifications for Cryptographic APIs](crysl)
 
 * [CogniCrypt<sub>GEN</sub> - Generator for Code Examples for Cryptographic APIs](code-generation)
 
