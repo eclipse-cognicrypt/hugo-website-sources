@@ -20,3 +20,14 @@ There are various different error types that CogniCrypt reports. Below, we disti
 * `"Operation with Cipher object not completed. Expected call to update, doFinal."` marks an **Incomplete Operation Error**. An incomplete operation errors appears, when a call on an object is missing and the object is garbage collected without having properly used. A typically example for such an error is a missing call to `close` on a `FileWriter`.
 
 * `"Variable keyBytes was not properly randomized"` is called a **Required Predicate Error**. Such an error is reported when the analysis infers that the combination of using *several* object is incorrect. The error message reports that the developer uses a variable `keyBytes` (containing some `byte[]`) for some cryptographic operation. The correct specification of the API requires that the `byte` array has been previously `randomized` (wich means correctly generate by some API).
+
+
+## Results View
+
+CogniCrypt displays the results of the most recent run of CogniCrypt<sub>SAST</sub> in an extra view. The view, which is depicted in the figure below, lists all objects, regardless of whether CogniCrypt<sub>SAST</sub> considers them insecure or not. 
+
+<div class="imgbox">
+    <img class="center-fit" src='./images/StatisticsView.png' alt="Results View">
+</div>
+
+Columns one and two detail the location of each finding, including class name, method and line number. In the third column, the results view provides a description of the finding. Column four indicates if the object is used securely or insecurely.
