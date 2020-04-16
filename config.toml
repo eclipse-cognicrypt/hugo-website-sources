@@ -23,7 +23,14 @@ theme = "hugo-solstice-theme"
   name = "Documentation"
   weight = -100
   identifier = "doc-menu"
-  url= "/documentation/"  
+  url= "/documentation/" 
+  
+[[menu.main]]
+  name = "Introduction & Configuration"
+  parent = "doc-menu"
+  weight = -100
+  identifier = "doc-gensetmenu"
+  url= "/documentation/"   
 
 [[menu.main]]
   name = "Code Generation"
