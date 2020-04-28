@@ -4,5 +4,5 @@ title = "6- University of Brasília"
 logo = "unb" #make sure to have a file named [logo].png in the static/assets/images/members/ folder
 is_steering = true
 member_id = 1082
-more_url = "http://www.alunoestrangeiro.unb.br/en/"
+more_url = "http://www.unb.br/en/"
 +++
