@@ -39,7 +39,7 @@ When CogniCrypt launches, the following window pops up:
 Here, the user has to select a cryptographic programming task by means of the icon buttons in the column on the left. Currently, five tasks are supported. The text box on the right shows a brief description of the task that is selecte. Once the user has selected a task they can continue.
 
 # Configuring a Solution
-For each task, CogniCrypt asks the user a number of questions. These questions help CogniCrypt configure the solution it provides the user with in the end. For the task ''Encrypt Data''(hereafter referred to as Encryption Task), CogniCrypt needs the user to answer the questions shown in the following screenshots:
+For each task, CogniCrypt asks the user a number of questions. These questions help CogniCrypt configure the solution it provides the user with in the end. For the task ''Encrypt Data'' (hereafter referred to as Encryption Task), CogniCrypt needs the user to answer the questions shown in the following screenshots:
 
 <div class="imgbox">
     <img class="center-fit" src='./images/Responses.png' alt="Questions for Encryption Task">
