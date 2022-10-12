@@ -29,7 +29,7 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          personal_key: ${{ secrets.Hugobuild }}
+          personal_token: ${{ secrets.Hugobuild }}
           external_repository: svenfeld/Hugobuild
           publish_branch: main  # default: gh-pages
           publish_dir: ./public
