@@ -1,9 +1,9 @@
-name: GitHub Pages
+name: Hugo build
 
 on:
   push:
     branches:
-      - master  # Set a branch to deploy
+      - main  # Set a branch to deploy
   pull_request:
 
 jobs:
@@ -29,7 +29,10 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          personal_token: ${{ secrets.Hugobuild }}
-          external_repository: svenfeld/Hugobuild
-          publish_branch: main  # default: gh-pages
+          personal_token: ${{ secrets.HUGO_TOKEN }}
+          external_repository: eclipse-cognicrypt/cognicrypt-website
+          publish_branch: main  # default: gh-pages  
           publish_dir: ./public
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          full_commit_message: Website build. Run number ${{github.run_number}} 
